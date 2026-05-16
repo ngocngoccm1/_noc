@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>3D Beating Heart</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 680, H = 480, CX = W/2, CY = H/2;
+canvas.width = W;
+canvas.height = H;
+
+function heartXY(t) {
+  const x = 16 * Math.pow(Math.sin(t), 3);
+  const y = -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
+  return [x, y];
+}
+
+function curve(p) {
+  return 2 * (2 * Math.sin(4 * p)) / (2 * Math.PI);
+}
+
+const NUM_FRAMES = 20;
+const SCALE = 10.5;
+
+function scatter(x, y, beta=0.12) {
+  const rx = -beta * Math.log(Math.random() + 1e-9);
+  const ry = -beta * Math.log(Math.random() + 1e-9);
+  return [x - rx*(x-CX), y - ry*(y-CY)];
+}
+
+function shrinkPt(x, y, r) {
+  const dist2 = (x-CX)**2 + (y-CY)**2;
+  const force = -1 / (dist2 ** 0.6);
+  return [x - r*force*(x-CX), y - r*force*(y-CY)];
+}
+
+function calcPos(x, y, ratio) {
+  const dist2 = (x-CX)**2 + (y-CY)**2;
+  const force = 1 / (dist2 ** 0.52);
+  const dx = ratio*force*(x-CX) + (Math.random()*2-1);
+  const dy = ratio*force*(y-CY) + (Math.random()*2-1);
+  return [x-dx, y-dy];
+}
+
+const pts = [];
+const edgePts = [];
+const centerPts = [];
+
+for (let i = 0; i < 1800; i++) {
+  const t = Math.random() * 2 * Math.PI;
+  const [hx, hy] = heartXY(t);
+  pts.push([Math.round(hx * SCALE + CX), Math.round(hy * SCALE + CY)]);
+}
+for (const [px, py] of pts) {
+  for (let j = 0; j < 3; j++) {
+    const [sx, sy] = scatter(px, py, 0.05);
+    edgePts.push([Math.round(sx), Math.round(sy)]);
+  }
+}
+for (let i = 0; i < 3500; i++) {
+  const [px, py] = pts[Math.floor(Math.random()*pts.length)];
+  const [sx, sy] = scatter(px, py, 0.17);
+  centerPts.push([Math.round(sx), Math.round(sy)]);
+}
+
+const allFrames = [];
+for (let f = 0; f < NUM_FRAMES; f++) {
+  const ratio = 10 * curve(f / 10 * Math.PI);
+  const haloR = Math.round(4 + 6*(1 + curve(f/10*Math.PI)));
+  const haloN = Math.round(3000 + 4000*Math.abs(curve(f/10*Math.PI)**2));
+  const fp = [];
+
+  for (let i = 0; i < haloN; i++) {
+    const t = Math.random()*2*Math.PI;
+    const [hx, hy] = heartXY(t);
+    let x = Math.round(hx * SCALE * 1.06 + CX);
+    let y = Math.round(hy * SCALE * 1.06 + CY);
+    const [sx, sy] = shrinkPt(x, y, haloR);
+    x = Math.round(sx + (Math.random()*28-14));
+    y = Math.round(sy + (Math.random()*28-14));
+    const size = Math.random() < 0.33 ? 1 : 2;
+    fp.push([x, y, size, 0.35]);
+  }
+  for (const [px, py] of pts) {
+    const [nx, ny] = calcPos(px, py, ratio);
+    const size = Math.floor(Math.random()*3)+1;
+    fp.push([Math.round(nx), Math.round(ny), size, 1.0]);
+  }
+  for (const [px, py] of edgePts) {
+    const [nx, ny] = calcPos(px, py, ratio);
+    const size = Math.floor(Math.random()*2)+1;
+    fp.push([Math.round(nx), Math.round(ny), size, 0.85]);
+  }
+  for (const [px, py] of centerPts) {
+    const [nx, ny] = calcPos(px, py, ratio);
+    const size = Math.floor(Math.random()*2)+1;
+    fp.push([Math.round(nx), Math.round(ny), size, 0.7]);
+  }
+  allFrames.push(fp);
+}
+
+let frame = 0;
+function render() {
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, W, H);
+
+  const fp = allFrames[frame % NUM_FRAMES];
+  for (const [x, y, size, alpha] of fp) {
+    const depth = 1 - Math.abs(x - CX) / (W * 0.6);
+    const brightness = 0.6 + 0.4 * depth;
+    const r = Math.round(247 * brightness);
+    const g = Math.round(60 * brightness + 20*(1-depth));
+    const b = Math.round(80 * brightness + 10*(1-depth));
+    ctx.globalAlpha = alpha * (0.7 + 0.3 * depth);
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(x, y, size, size);
+  }
+  ctx.globalAlpha = 1;
+  frame++;
+  setTimeout(render, 100);
+}
+render();
+</script>
+</body>
+</html>

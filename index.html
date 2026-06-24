@@ -1,373 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Cake</title>
   <style>
-@import url(https://fonts.googleapis.com/css?family=Lato:300italic);
+    @import url(https://fonts.googleapis.com/css?family=Lato:300italic);
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  scrollbar-width: none;
-  overflow: hidden;
-}
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      scrollbar-width: none;
+      overflow: hidden;
+    }
 
-body {
-  background: #ee9ca7;
-}
+    body {
+      background: #ee9ca7;
+    }
 
-.name {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
+    .name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
 
-#cake {
-  display: block;
-  position: relative;
-  margin: -10em auto 0 auto;
-}
+    #cake {
+      display: block;
+      position: relative;
+      margin: -10em auto 0 auto;
+    }
 
-/* ============================================== Candle */
-.cake {
-  background: #ffffff;
-  border-radius: 10px;
-  position: absolute;
-  top: 228px;
-  left: 50%;
-  margin-left: -2.4px;
-  margin-top: -8.33333333px;
-  width: 5px;
-  height: 35px;
-  transform: translateY(-300px);
-  backface-visibility: hidden;
-  animation: in 500ms 6s ease-out forwards;
-}
+    /* ============================================== Candle */
+    .cake {
+      background: #ffffff;
+      border-radius: 10px;
+      position: absolute;
+      top: 228px;
+      left: 50%;
+      margin-left: -2.4px;
+      margin-top: -8.33333333px;
+      width: 5px;
+      height: 35px;
+      transform: translateY(-300px);
+      backface-visibility: hidden;
+      animation: in 500ms 6s ease-out forwards;
+    }
 
-.cake::after,
-.cake::before {
-  background: rgba(255, 0, 0, 0.4);
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2.22222222px;
-}
+    .cake::after,
+    .cake::before {
+      background: rgba(255, 0, 0, 0.4);
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2.22222222px;
+    }
 
-.cake::after {
-  top: 25%;
-  left: 0;
-}
+    .cake::after {
+      top: 25%;
+      left: 0;
+    }
 
-.cake::before {
-  top: 45%;
-  left: 0;
-}
+    .cake::before {
+      top: 45%;
+      left: 0;
+    }
 
-/* ============================================== Fire */
-.fuego {
-  border-radius: 100%;
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  margin-left: -2.6px;
-  width: 6.66666667px;
-  height: 18px;
-}
+    /* ============================================== Fire */
+    .fuego {
+      border-radius: 100%;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      margin-left: -2.6px;
+      width: 6.66666667px;
+      height: 18px;
+    }
 
-.fuego:nth-child(1) { animation: fuego 2s 6.5s infinite; }
-.fuego:nth-child(2) { animation: fuego 1.5s 6.5s infinite; }
-.fuego:nth-child(3) { animation: fuego 1s 6.5s infinite; }
-.fuego:nth-child(4) { animation: fuego 0.5s 6.5s infinite; }
-.fuego:nth-child(5) { animation: fuego 0.2s 6.5s infinite; }
+    .fuego:nth-child(1) {
+      animation: fuego 2s 6.5s infinite;
+    }
 
-/* ============================================== Animation Fire */
-@keyframes fuego {
-  0%, 100% {
-    background: rgba(254, 248, 97, 0.5);
-    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
-    transform: translateY(0) scale(1);
-  }
+    .fuego:nth-child(2) {
+      animation: fuego 1.5s 6.5s infinite;
+    }
 
-  50% {
-    background: rgba(255, 50, 0, 0.1);
-    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
-    transform: translateY(-20px) scale(0);
-  }
-}
+    .fuego:nth-child(3) {
+      animation: fuego 1s 6.5s infinite;
+    }
 
-@keyframes in {
-  to {
-    transform: translateY(0);
-  }
-}
+    .fuego:nth-child(4) {
+      animation: fuego 0.5s 6.5s infinite;
+    }
 
-.text {
-  color: #8b6a60;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-}
+    .fuego:nth-child(5) {
+      animation: fuego 0.2s 6.5s infinite;
+    }
 
-.text h1 {
-  font-size: 1.4em;
-}
-  
+    /* ============================================== Animation Fire */
+    @keyframes fuego {
 
-/* Fireworks overlay — added without changing the original cake layout */
-#fireworks {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-}
+      0%,
+      100% {
+        background: rgba(254, 248, 97, 0.5);
+        box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+        transform: translateY(0) scale(1);
+      }
 
+      50% {
+        background: rgba(255, 50, 0, 0.1);
+        box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+        transform: translateY(-20px) scale(0);
+      }
+    }
 
+    @keyframes in {
+      to {
+        transform: translateY(0);
+      }
+    }
 
-  
+    .text {
+      color: #8b6a60;
+      font-family: "Lato", sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      text-align: center;
+    }
 
-/* Hai dòng chúc mừng xuất hiện lần lượt — không thay đổi bố cục gốc */
-#birthday-age-message {
-  position: fixed;
-  left: 50%;
-  bottom: clamp(48px, 8vh, 82px);
-  z-index: 15;
-  width: min(92vw, 620px);
-  transform: translateX(-50%);
-  text-align: center;
-  pointer-events: none;
-  font-family: "Lato", sans-serif;
-  font-style: italic;
-  color: #fffdf7;
-  text-shadow:
-    0 2px 10px rgba(105, 54, 67, 0.48),
-    0 0 22px rgba(255, 241, 203, 0.55);
-}
-
-#birthday-age-message p {
-  margin: 0;
-  opacity: 0;
-  transform: translateY(16px) scale(0.96);
-  filter: blur(7px);
-}
-
-#birthday-age-message .age-line {
-  font-size: clamp(1.45rem, 5.2vw, 2.65rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-#birthday-age-message .joke-line {
-  margin-top: 8px;
-  font-size: clamp(1rem, 3.6vw, 1.55rem);
-  font-weight: 600;
-}
-
-#birthday-age-message p.is-visible {
-  animation: birthdayTextReveal 1s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-@keyframes birthdayTextReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(16px) scale(0.96);
-    filter: blur(7px);
-  }
-  65% {
-    opacity: 1;
-    transform: translateY(-2px) scale(1.02);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
+    .text h1 {
+      font-size: 1.4em;
+    }
 
 
-/* Text-transition additions only */
-
-#tap-to-continue {
-  position: fixed;
-  left: 50%;
-  top: 57%;
-  z-index: 18;
-  width: min(78vw, 310px);
-  margin: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-50%, -50%);
-  color: rgba(255, 253, 247, 0.76);
-  font-family: "Lato", sans-serif;
-  font-size: clamp(0.82rem, 3vw, 1rem);
-  font-style: italic;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: 0.045em;
-  text-align: center;
-  text-shadow:
-    0 1px 8px rgba(105, 54, 67, 0.42),
-    0 0 15px rgba(255, 255, 255, 0.24);
-  pointer-events: none;
-}
-
-#tap-to-continue.is-ready {
-  visibility: visible;
-  animation: tapHintBlink 1.15s ease-in-out infinite;
-}
-
-#tap-to-continue.is-finished {
-  animation: none;
-  opacity: 0;
-  visibility: hidden;
-}
-
-@keyframes tapHintBlink {
-  0%, 100% {
-    opacity: 0.25;
-    transform: translate(-50%, -50%) scale(0.98);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1.02);
-  }
-}
-
-@media (max-width: 480px) {
-  #tap-to-continue {
-    top: 57%;
-  }
-}
-
-#wish-transition {
-  position: fixed;
-  left: 50%;
-  bottom: clamp(47px, 8vh, 82px);
-  z-index: 17;
-  width: min(90vw, 720px);
-  transform: translateX(-50%);
-  text-align: center;
-  pointer-events: none;
-  font-family: "Lato", sans-serif;
-  font-style: italic;
-  color: #fffdf7;
-  text-shadow:
-    0 2px 11px rgba(105, 54, 67, 0.52),
-    0 0 24px rgba(255, 241, 203, 0.58);
-}
-
-#wish-transition .wish-line {
-  margin: 0;
-  min-height: 1.25em;
-  opacity: 0;
-  visibility: hidden;
-  font-size: clamp(1.25rem, 4.7vw, 2.35rem);
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: 0.015em;
-  text-wrap: balance;
-}
-
-body.text-transition-ready {
-  cursor: pointer;
-}
-
-@media (max-width: 480px) {
-  #wish-transition {
-    bottom: clamp(43px, 7vh, 68px);
-  }
-}
+    /* Fireworks overlay — added without changing the original cake layout */
+    #fireworks {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
 
 
-/* CSS-animation version of the message transition */
-#birthday-age-message.is-leaving p {
-  animation: originalMessageOut 0.5s cubic-bezier(.55,.05,.67,.19) forwards;
-}
 
-#wish-transition .wish-line.is-entering {
-  visibility: visible;
-  animation: wishTextIn 0.72s cubic-bezier(.2,.8,.2,1) forwards;
-}
 
-#wish-transition .wish-line.is-leaving {
-  visibility: visible;
-  animation: wishTextOut 0.42s cubic-bezier(.55,.05,.67,.19) forwards;
-}
 
-#wish-transition .wish-line.is-still {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
+    /* Hai dòng chúc mừng xuất hiện lần lượt — không thay đổi bố cục gốc */
+    #birthday-age-message {
+      position: fixed;
+      left: 50%;
+      bottom: clamp(48px, 8vh, 82px);
+      z-index: 15;
+      width: min(92vw, 620px);
+      transform: translateX(-50%);
+      text-align: center;
+      pointer-events: none;
+      font-family: "Lato", sans-serif;
+      font-style: italic;
+      color: #fffdf7;
+      text-shadow:
+        0 2px 10px rgba(105, 54, 67, 0.48),
+        0 0 22px rgba(255, 241, 203, 0.55);
+    }
 
-@keyframes originalMessageOut {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-15px) scale(0.98);
-    filter: blur(7px);
-  }
-}
+    #birthday-age-message p {
+      margin: 0;
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+      filter: blur(7px);
+    }
 
-@keyframes wishTextIn {
-  0% {
-    opacity: 0;
-    transform: translateY(24px) scale(0.96);
-    filter: blur(9px);
-  }
-  62% {
-    opacity: 1;
-    transform: translateY(-2px) scale(1.015);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
+    #birthday-age-message .age-line {
+      font-size: clamp(1.45rem, 5.2vw, 2.65rem);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
 
-@keyframes wishTextOut {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.98);
-    filter: blur(8px);
-  }
-}
+    #birthday-age-message .joke-line {
+      margin-top: 8px;
+      font-size: clamp(1rem, 3.6vw, 1.55rem);
+      font-weight: 600;
+    }
 
+    #birthday-age-message p.is-visible {
+      animation: birthdayTextReveal 1s cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+
+    @keyframes birthdayTextReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.96);
+        filter: blur(7px);
+      }
+
+      65% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.02);
+        filter: blur(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+
+    /* Text-transition additions only */
+
+    #tap-to-continue {
+      position: fixed;
+      left: 50%;
+      top: 57%;
+      z-index: 18;
+      width: min(78vw, 310px);
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, -50%);
+      color: rgba(255, 253, 247, 0.76);
+      font-family: "Lato", sans-serif;
+      font-size: clamp(0.82rem, 3vw, 1rem);
+      font-style: italic;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.045em;
+      text-align: center;
+      text-shadow:
+        0 1px 8px rgba(105, 54, 67, 0.42),
+        0 0 15px rgba(255, 255, 255, 0.24);
+      pointer-events: none;
+    }
+
+    #tap-to-continue.is-ready {
+      visibility: visible;
+      animation: tapHintBlink 1.15s ease-in-out infinite;
+    }
+
+    #tap-to-continue.is-finished {
+      animation: none;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    @keyframes tapHintBlink {
+
+      0%,
+      100% {
+        opacity: 0.25;
+        transform: translate(-50%, -50%) scale(0.98);
+      }
+
+      50% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.02);
+      }
+    }
+
+    @media (max-width: 480px) {
+      #tap-to-continue {
+        top: 57%;
+      }
+    }
+
+    #wish-transition {
+      position: fixed;
+      left: 50%;
+      bottom: clamp(47px, 8vh, 82px);
+      z-index: 17;
+      width: min(90vw, 720px);
+      transform: translateX(-50%);
+      text-align: center;
+      pointer-events: none;
+      font-family: "Lato", sans-serif;
+      font-style: italic;
+      color: #fffdf7;
+      text-shadow:
+        0 2px 11px rgba(105, 54, 67, 0.52),
+        0 0 24px rgba(255, 241, 203, 0.58);
+    }
+
+    #wish-transition .wish-line {
+      margin: 0;
+      min-height: 1.25em;
+      opacity: 0;
+      visibility: hidden;
+      font-size: clamp(1.25rem, 4.7vw, 2.35rem);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: 0.015em;
+      text-wrap: balance;
+    }
+
+    body.text-transition-ready {
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      #wish-transition {
+        bottom: clamp(43px, 7vh, 68px);
+      }
+    }
+
+
+    /* CSS-animation version of the message transition */
+    #birthday-age-message.is-leaving p {
+      animation: originalMessageOut 0.5s cubic-bezier(.55, .05, .67, .19) forwards;
+    }
+
+    #wish-transition .wish-line.is-entering {
+      visibility: visible;
+      animation: wishTextIn 0.72s cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+
+    #wish-transition .wish-line.is-leaving {
+      visibility: visible;
+      animation: wishTextOut 0.42s cubic-bezier(.55, .05, .67, .19) forwards;
+    }
+
+    #wish-transition .wish-line.is-still {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    @keyframes originalMessageOut {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.98);
+        filter: blur(7px);
+      }
+    }
+
+    @keyframes wishTextIn {
+      0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+        filter: blur(9px);
+      }
+
+      62% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.015);
+        filter: blur(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes wishTextOut {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.98);
+        filter: blur(8px);
+      }
+    }
   </style>
 </head>
-<body>
-<canvas id="fireworks" aria-hidden="true"></canvas>
-<audio id="birthday-music" src="twisterium-happy-birthday-482411.mp3" preload="auto" autoplay></audio>
 
-<div class="cake">
+<body>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+  <audio id="birthday-music" src="twisterium-happy-birthday-482411.mp3" preload="auto" autoplay></audio>
+
+  <div class="cake">
     <div class="fuego"></div>
     <div class="fuego"></div>
     <div class="fuego"></div>
     <div class="fuego"></div>
     <div class="fuego"></div>
-</div>
-<svg id="cake" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500" enable-background="new 0 0 200 500" xml:space="preserve">
+  </div>
+  <svg id="cake" version="1.1" x="0px" y="0px" width="200px" height="500px" viewBox="0 0 200 500"
+    enable-background="new 0 0 200 500" xml:space="preserve">
     <path fill="#a88679" d="M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z">
-        <animate id="bizcocho_3" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1" begin="relleno_2.end" dur="0.3s" fill="freeze" values="
+      <animate id="bizcocho_3" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1" begin="relleno_2.end"
+        dur="0.3s" fill="freeze" values="
                           M173.667-13.94c-49.298,0-102.782,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c44.697,0,96.586,0,147.334,0C177.667-29.942,177.668-13.94,173.667-13.94z
                           ;
@@ -382,7 +410,8 @@ body.text-transition-ready {
     <path fill="#8b6a60" d="M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
 		c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.144,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
 		L100-178.521z">
-        <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_2.end" dur="0.5s" fill="freeze" values="
+      <animate id="relleno_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.58 1"
+        begin="bizcocho_2.end" dur="0.5s" fill="freeze" values="
                           M100-178.521c1.858,0,3.364,1.506,3.364,3.363c0,0,0,33.17,0,44.227
 		c0,19.144,0,57.431,0,76.574c0,10.152,0,40.607,0,40.607c0,1.858-1.506,3.364-3.364,3.364l0,0c-1.858,0-3.364-1.506-3.364-3.364c0,0,0-30.455,0-40.607c0-19.144,0-57.432,0-76.575c0-11.057,0-44.226,0-44.226C96.636-177.015,98.142-178.521,100-178.521
 		L100-178.521z
@@ -404,7 +433,8 @@ body.text-transition-ready {
     </path>
     <path fill="#a88679" d="M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z">
-        <animate id="bizcocho_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0.25 0 0.58 1" begin="relleno_1.end" dur="0.5s" fill="freeze" values="
+      <animate id="bizcocho_2" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0.25 0 0.58 1"
+        begin="relleno_1.end" dur="0.5s" fill="freeze" values="
                           M173.667-15.929c-46.512,0-105.486,0-147.334,0c-3.999,0-4-16.002,0-16.002
 		c43.566,0,97.96,0,147.334,0C177.667-31.931,177.666-15.929,173.667-15.929z
                           ;
@@ -421,7 +451,8 @@ body.text-transition-ready {
     <path fill="#8b6a60" d="M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
 		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
 		C98.411-75.883,101.368-75.592,101.368-73.685z">
-        <animate id="relleno_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.6 1" begin="bizcocho_1.end" dur="0.5s" fill="freeze" values="
+      <animate id="relleno_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 0.6 1"
+        begin="bizcocho_1.end" dur="0.5s" fill="freeze" values="
                           M101.368-73.685c0,12.164,0,15.18,0,28.519c0,22.702,0-13.661,0,8.304c0,14.48,0,18.233,0,30.512
 		c0,1.753-2.958,1.847-2.958,0c0-12.68,0-16.277,0-30.401c0-21.983,0,11.66,0-8.305c0-13.027,0-15.992,0-28.628
 		C98.411-75.883,101.368-75.592,101.368-73.685z
@@ -441,7 +472,9 @@ body.text-transition-ready {
     </path>
     <path fill="#a88679" d="M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
 		C177.668,5.569,177.667,21.571,173.667,21.571z">
-        <animate id="bizcocho_1" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="2s" dur="0.8s" fill="freeze" values="
+      <animate id="bizcocho_1" attributeName="d" calcMode="spline"
+        keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0.25 0 0.6 1" begin="2s" dur="0.8s" fill="freeze"
+        values="
                           M173.667,21.571c-33.174,0-111.467,0-147.334,0c-4,0-4-16.002,0-16.002c39.836,0,105.982,0,147.334,0
 		C177.668,5.569,177.667,21.571,173.667,21.571z
                           ;
@@ -468,7 +501,9 @@ body.text-transition-ready {
 	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
 	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
 	c0,7.618,0,22.854,0,30.472c0,4.952,0,14.854,0,19.807C104.812,96.292,104.812,107.576,104.812,113.216z">
-        <animate id="crema" attributeName="d" calcMode="spline" keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end" dur="2s" fill="freeze" values="
+      <animate id="crema" attributeName="d" calcMode="spline"
+        keySplines="0 0 1 1; 0 0 1 1; 0 0 1 1; 0.25 0 1 1; 0 0 1 1; 0 0 0.58 1" begin="bizcocho_3.end" dur="2s"
+        fill="freeze" values="
                           M104.812,113.216c0,3.119-2.164,5.67-4.812,5.67c-2.646,0-4.812-2.551-4.812-5.67c0-5.594,0-16.782,0-22.375
 	c0-5.143,0-15.427,0-20.568c0-7.333,0-21.998,0-29.33c0-5.523,0-16.569,0-22.092c0-3.295,0-9.885,0-13.181
 	C95.188,2.551,97.353,0,100,0c2.648,0,4.812,2.551,4.812,5.669c0,3.248,0,9.743,0,12.991c0,5.428,0,16.284,0,21.711
@@ -511,413 +546,413 @@ body.text-transition-ready {
                           " />
     </path>
     <rect x="10" y="475.571" fill="#fefae9" width="180" height="4" />
-</svg>
-<div class="text">
-  <h1>happy birthday!</h1>
-  <p class="name">Lovie</p>
-</div>
+  </svg>
+  <div class="text">
+    <h1>happy birthday!</h1>
+  </div>
 
-<div id="birthday-age-message" aria-live="polite">
-  <p class="age-line">Happy 18th Birthday to Munn~</p>
-  <p class="joke-line">For the 7th time :&gt;</p>
-</div>
+  <div id="birthday-age-message" aria-live="polite">
+    <p class="age-line">Happy 18th Birthday to Munn~</p>
+    <p class="joke-line">For the 8th time :&gt;</p>
+  </div>
 
-<p id="tap-to-continue" aria-hidden="true">Tap anywhere to continue</p>
+  <p id="tap-to-continue" aria-hidden="true">Tap anywhere to continue</p>
 
-<div id="wish-transition" aria-live="polite">
-  <p class="wish-line"></p>
-</div>
-
-
-<script>
-(() => {
-  const canvas = document.getElementById("fireworks");
-  const ctx = canvas.getContext("2d");
-  const particles = [];
-  const flashes = [];
-  const MAX_PARTICLES = 3600;
+  <div id="wish-transition" aria-live="polite">
+    <p class="wish-line"></p>
+  </div>
 
 
-  const birthdayMusic = document.getElementById("birthday-music");
+  <script>
+    (() => {
+      const canvas = document.getElementById("fireworks");
+      const ctx = canvas.getContext("2d");
+      const particles = [];
+      const flashes = [];
+      const MAX_PARTICLES = 3600;
 
-  function playBirthdayMusic() {
-    if (!birthdayMusic || !birthdayMusic.paused) return;
-    birthdayMusic.volume = 0.78;
-    const playRequest = birthdayMusic.play();
-    if (playRequest && typeof playRequest.catch === "function") {
-      playRequest.catch(() => {
-        /* Một số trình duyệt chặn autoplay có âm thanh.
-           Nhạc sẽ tự chạy ở lần chạm hoặc nhấn phím đầu tiên, không hiện nút. */
-      });
-    }
-  }
 
-  function unlockBirthdayMusic() {
-    playBirthdayMusic();
-    if (!birthdayMusic.paused) {
-      window.removeEventListener("pointerdown", unlockBirthdayMusic);
-      window.removeEventListener("touchstart", unlockBirthdayMusic);
-      window.removeEventListener("keydown", unlockBirthdayMusic);
-    }
-  }
+      const birthdayMusic = document.getElementById("birthday-music");
 
-  /* Thử phát ngay khi HTML được tải và thử lại khi toàn bộ trang load xong. */
-  playBirthdayMusic();
-  window.addEventListener("load", playBirthdayMusic, { once: true });
-
-  /* Fallback vô hình khi trình duyệt chặn autoplay. */
-  window.addEventListener("pointerdown", unlockBirthdayMusic, { passive: true });
-  window.addEventListener("touchstart", unlockBirthdayMusic, { passive: true });
-  window.addEventListener("keydown", unlockBirthdayMusic);
-
-  /* Chỉ thay đổi hiệu ứng pháo hoa: màu rực hơn và mật độ dày hơn. */
-  const palettes = [
-    ["#fff36b", "#ffb703", "#ffffff"],
-    ["#ff4d9d", "#ff86c8", "#ffffff"],
-    ["#7df9ff", "#00c2ff", "#ffffff"],
-    ["#b8ff6a", "#58e86f", "#ffffff"],
-    ["#d7a6ff", "#8f5cff", "#ffffff"],
-    ["#ff704d", "#ffbe5c", "#ffffff"]
-  ];
-
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
-  let animationFrame = 0;
-
-  function resizeCanvas() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function randomPalette() {
-    return palettes[Math.floor(Math.random() * palettes.length)];
-  }
-
-  function addParticle(x, y, vx, vy, color, options = {}) {
-    if (particles.length >= MAX_PARTICLES) return;
-    particles.push({
-      x,
-      y,
-      previousX: x,
-      previousY: y,
-      vx,
-      vy,
-      gravity: options.gravity ?? 0.038,
-      friction: options.friction ?? 0.984,
-      alpha: options.alpha ?? 1,
-      decay: options.decay ?? (0.007 + Math.random() * 0.006),
-      color,
-      size: options.size ?? (1.3 + Math.random() * 1.8),
-      twinkle: options.twinkle ?? Math.random() < 0.42,
-      glitter: options.glitter ?? false
-    });
-  }
-
-  function createBurst(x, y, amount = 112, power = 1, palette = randomPalette()) {
-    flashes.push({ x, y, radius: 8, alpha: 0.75, color: palette[1] });
-
-    /* Vòng pháo chính */
-    for (let i = 0; i < amount; i += 1) {
-      const angle = (Math.PI * 2 * i) / amount + (Math.random() - 0.5) * 0.08;
-      const speed = (2.1 + Math.random() * 4.3) * power;
-      const color = palette[Math.floor(Math.random() * palette.length)];
-      addParticle(
-        x,
-        y,
-        Math.cos(angle) * speed,
-        Math.sin(angle) * speed,
-        color,
-        {
-          gravity: 0.032 + Math.random() * 0.022,
-          friction: 0.982,
-          decay: 0.006 + Math.random() * 0.006,
-          size: 1.4 + Math.random() * 2.2
+      function playBirthdayMusic() {
+        if (!birthdayMusic || !birthdayMusic.paused) return;
+        birthdayMusic.volume = 0.78;
+        const playRequest = birthdayMusic.play();
+        if (playRequest && typeof playRequest.catch === "function") {
+          playRequest.catch(() => {
+            /* Một số trình duyệt chặn autoplay có âm thanh.
+               Nhạc sẽ tự chạy ở lần chạm hoặc nhấn phím đầu tiên, không hiện nút. */
+          });
         }
-      );
-    }
+      }
 
-    /* Lõi sáng dày ở giữa */
-    const coreAmount = Math.round(amount * 0.34);
-    for (let i = 0; i < coreAmount; i += 1) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = (0.8 + Math.random() * 2.7) * power;
-      addParticle(
-        x,
-        y,
-        Math.cos(angle) * speed,
-        Math.sin(angle) * speed,
-        Math.random() < 0.55 ? "#ffffff" : palette[0],
-        {
-          gravity: 0.028,
-          decay: 0.012 + Math.random() * 0.012,
-          size: 1.1 + Math.random() * 1.5,
-          glitter: true
+      function unlockBirthdayMusic() {
+        playBirthdayMusic();
+        if (!birthdayMusic.paused) {
+          window.removeEventListener("pointerdown", unlockBirthdayMusic);
+          window.removeEventListener("touchstart", unlockBirthdayMusic);
+          window.removeEventListener("keydown", unlockBirthdayMusic);
         }
-      );
-    }
-  }
+      }
 
-  function createGlitterCloud(x, y, amount = 54) {
-    const palette = randomPalette();
-    for (let i = 0; i < amount; i += 1) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 0.7 + Math.random() * 2.1;
-      addParticle(
-        x,
-        y,
-        Math.cos(angle) * speed,
-        Math.sin(angle) * speed,
-        Math.random() < 0.5 ? "#ffffff" : palette[Math.floor(Math.random() * palette.length)],
-        {
-          gravity: 0.018 + Math.random() * 0.018,
-          friction: 0.976,
-          decay: 0.013 + Math.random() * 0.018,
-          size: 0.9 + Math.random() * 1.7,
-          glitter: true
+      /* Thử phát ngay khi HTML được tải và thử lại khi toàn bộ trang load xong. */
+      playBirthdayMusic();
+      window.addEventListener("load", playBirthdayMusic, { once: true });
+
+      /* Fallback vô hình khi trình duyệt chặn autoplay. */
+      window.addEventListener("pointerdown", unlockBirthdayMusic, { passive: true });
+      window.addEventListener("touchstart", unlockBirthdayMusic, { passive: true });
+      window.addEventListener("keydown", unlockBirthdayMusic);
+
+      /* Chỉ thay đổi hiệu ứng pháo hoa: màu rực hơn và mật độ dày hơn. */
+      const palettes = [
+        ["#fff36b", "#ffb703", "#ffffff"],
+        ["#ff4d9d", "#ff86c8", "#ffffff"],
+        ["#7df9ff", "#00c2ff", "#ffffff"],
+        ["#b8ff6a", "#58e86f", "#ffffff"],
+        ["#d7a6ff", "#8f5cff", "#ffffff"],
+        ["#ff704d", "#ffbe5c", "#ffffff"]
+      ];
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let animationFrame = 0;
+
+      function resizeCanvas() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function randomPalette() {
+        return palettes[Math.floor(Math.random() * palettes.length)];
+      }
+
+      function addParticle(x, y, vx, vy, color, options = {}) {
+        if (particles.length >= MAX_PARTICLES) return;
+        particles.push({
+          x,
+          y,
+          previousX: x,
+          previousY: y,
+          vx,
+          vy,
+          gravity: options.gravity ?? 0.038,
+          friction: options.friction ?? 0.984,
+          alpha: options.alpha ?? 1,
+          decay: options.decay ?? (0.007 + Math.random() * 0.006),
+          color,
+          size: options.size ?? (1.3 + Math.random() * 1.8),
+          twinkle: options.twinkle ?? Math.random() < 0.42,
+          glitter: options.glitter ?? false
+        });
+      }
+
+      function createBurst(x, y, amount = 112, power = 1, palette = randomPalette()) {
+        flashes.push({ x, y, radius: 8, alpha: 0.75, color: palette[1] });
+
+        /* Vòng pháo chính */
+        for (let i = 0; i < amount; i += 1) {
+          const angle = (Math.PI * 2 * i) / amount + (Math.random() - 0.5) * 0.08;
+          const speed = (2.1 + Math.random() * 4.3) * power;
+          const color = palette[Math.floor(Math.random() * palette.length)];
+          addParticle(
+            x,
+            y,
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed,
+            color,
+            {
+              gravity: 0.032 + Math.random() * 0.022,
+              friction: 0.982,
+              decay: 0.006 + Math.random() * 0.006,
+              size: 1.4 + Math.random() * 2.2
+            }
+          );
         }
-      );
-    }
-  }
 
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.globalCompositeOperation = "lighter";
-
-    for (let i = flashes.length - 1; i >= 0; i -= 1) {
-      const flash = flashes[i];
-      flash.radius += 5.5;
-      flash.alpha *= 0.78;
-      if (flash.alpha < 0.025) {
-        flashes.splice(i, 1);
-        continue;
-      }
-      const gradient = ctx.createRadialGradient(
-        flash.x,
-        flash.y,
-        0,
-        flash.x,
-        flash.y,
-        flash.radius
-      );
-      gradient.addColorStop(0, `rgba(255,255,255,${flash.alpha})`);
-      gradient.addColorStop(0.22, flash.color);
-      gradient.addColorStop(1, "rgba(255,255,255,0)");
-      ctx.globalAlpha = flash.alpha;
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(flash.x, flash.y, flash.radius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    for (let i = particles.length - 1; i >= 0; i -= 1) {
-      const particle = particles[i];
-      particle.previousX = particle.x;
-      particle.previousY = particle.y;
-      particle.vx *= particle.friction;
-      particle.vy = particle.vy * particle.friction + particle.gravity;
-      particle.x += particle.vx;
-      particle.y += particle.vy;
-      particle.alpha -= particle.decay;
-
-      if (particle.alpha <= 0) {
-        particles.splice(i, 1);
-        continue;
+        /* Lõi sáng dày ở giữa */
+        const coreAmount = Math.round(amount * 0.34);
+        for (let i = 0; i < coreAmount; i += 1) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = (0.8 + Math.random() * 2.7) * power;
+          addParticle(
+            x,
+            y,
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed,
+            Math.random() < 0.55 ? "#ffffff" : palette[0],
+            {
+              gravity: 0.028,
+              decay: 0.012 + Math.random() * 0.012,
+              size: 1.1 + Math.random() * 1.5,
+              glitter: true
+            }
+          );
+        }
       }
 
-      const shimmer = particle.twinkle
-        ? 0.45 + Math.abs(Math.sin((particle.x + particle.y) * 0.12)) * 0.55
-        : 1;
-      const visibleAlpha = Math.max(particle.alpha * shimmer, 0);
-
-      ctx.globalAlpha = visibleAlpha;
-      ctx.strokeStyle = particle.color;
-      ctx.lineCap = "round";
-      ctx.lineWidth = particle.size;
-      ctx.beginPath();
-      ctx.moveTo(particle.previousX, particle.previousY);
-      ctx.lineTo(particle.x, particle.y);
-      ctx.stroke();
-
-      if (particle.glitter && Math.random() < 0.42) {
-        ctx.globalAlpha = visibleAlpha * 0.85;
-        ctx.fillStyle = particle.color;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 0.9, 0, Math.PI * 2);
-        ctx.fill();
+      function createGlitterCloud(x, y, amount = 54) {
+        const palette = randomPalette();
+        for (let i = 0; i < amount; i += 1) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 0.7 + Math.random() * 2.1;
+          addParticle(
+            x,
+            y,
+            Math.cos(angle) * speed,
+            Math.sin(angle) * speed,
+            Math.random() < 0.5 ? "#ffffff" : palette[Math.floor(Math.random() * palette.length)],
+            {
+              gravity: 0.018 + Math.random() * 0.018,
+              friction: 0.976,
+              decay: 0.013 + Math.random() * 0.018,
+              size: 0.9 + Math.random() * 1.7,
+              glitter: true
+            }
+          );
+        }
       }
-    }
 
-    ctx.globalAlpha = 1;
-    ctx.globalCompositeOperation = "source-over";
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalCompositeOperation = "lighter";
 
-    if (particles.length > 0 || flashes.length > 0) {
-      animationFrame = requestAnimationFrame(draw);
-    } else {
-      animationFrame = 0;
-      ctx.clearRect(0, 0, width, height);
-    }
-  }
+        for (let i = flashes.length - 1; i >= 0; i -= 1) {
+          const flash = flashes[i];
+          flash.radius += 5.5;
+          flash.alpha *= 0.78;
+          if (flash.alpha < 0.025) {
+            flashes.splice(i, 1);
+            continue;
+          }
+          const gradient = ctx.createRadialGradient(
+            flash.x,
+            flash.y,
+            0,
+            flash.x,
+            flash.y,
+            flash.radius
+          );
+          gradient.addColorStop(0, `rgba(255,255,255,${flash.alpha})`);
+          gradient.addColorStop(0.22, flash.color);
+          gradient.addColorStop(1, "rgba(255,255,255,0)");
+          ctx.globalAlpha = flash.alpha;
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(flash.x, flash.y, flash.radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
 
-  function burstAt(xRatio, yRatio, delay, amount = 112, power = 1) {
-    window.setTimeout(() => {
-      const x = width * xRatio;
-      const y = height * yRatio;
-      createBurst(x, y, amount, power);
-      createGlitterCloud(x, y, Math.round(amount * 0.42));
-      if (!animationFrame) animationFrame = requestAnimationFrame(draw);
-    }, delay);
-  }
+        for (let i = particles.length - 1; i >= 0; i -= 1) {
+          const particle = particles[i];
+          particle.previousX = particle.x;
+          particle.previousY = particle.y;
+          particle.vx *= particle.friction;
+          particle.vy = particle.vy * particle.friction + particle.gravity;
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+          particle.alpha -= particle.decay;
 
-  function randomBurst(delay, amount = 96, power = 0.95) {
-    window.setTimeout(() => {
-      const sideBias = Math.random() < 0.5;
-      const xRatio = sideBias
-        ? 0.08 + Math.random() * 0.34
-        : 0.58 + Math.random() * 0.34;
-      const yRatio = 0.10 + Math.random() * 0.43;
-      const x = width * xRatio;
-      const y = height * yRatio;
-      createBurst(x, y, amount, power);
-      createGlitterCloud(x, y, 42);
-      if (!animationFrame) animationFrame = requestAnimationFrame(draw);
-    }, delay);
-  }
+          if (particle.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
 
-  function startFireworks() {
-    /* Đợt mở màn lớn */
-    burstAt(0.18, 0.27, 0, 132, 1.08);
-    burstAt(0.82, 0.24, 140, 138, 1.1);
-    burstAt(0.50, 0.13, 390, 154, 1.16);
+          const shimmer = particle.twinkle
+            ? 0.45 + Math.abs(Math.sin((particle.x + particle.y) * 0.12)) * 0.55
+            : 1;
+          const visibleAlpha = Math.max(particle.alpha * shimmer, 0);
 
-    /* Các đợt dày xen kẽ hai bên */
-    burstAt(0.08, 0.46, 720, 108, 0.98);
-    burstAt(0.91, 0.43, 850, 112, 1.0);
-    randomBurst(1110, 102, 0.95);
-    randomBurst(1370, 112, 1.02);
-    burstAt(0.28, 0.18, 1650, 122, 1.04);
-    burstAt(0.72, 0.17, 1760, 126, 1.06);
-    randomBurst(2080, 116, 1.0);
-    randomBurst(2380, 104, 0.94);
+          ctx.globalAlpha = visibleAlpha;
+          ctx.strokeStyle = particle.color;
+          ctx.lineCap = "round";
+          ctx.lineWidth = particle.size;
+          ctx.beginPath();
+          ctx.moveTo(particle.previousX, particle.previousY);
+          ctx.lineTo(particle.x, particle.y);
+          ctx.stroke();
 
-    /* Cao trào phủ kín phần trên màn hình */
-    burstAt(0.12, 0.22, 2700, 126, 1.08);
-    burstAt(0.50, 0.28, 2820, 164, 1.2);
-    burstAt(0.88, 0.21, 2940, 132, 1.1);
-    randomBurst(3300, 112, 1.0);
-    randomBurst(3540, 118, 1.04);
-    burstAt(0.32, 0.12, 3830, 132, 1.08);
-    burstAt(0.68, 0.11, 3940, 136, 1.1);
+          if (particle.glitter && Math.random() < 0.42) {
+            ctx.globalAlpha = visibleAlpha * 0.85;
+            ctx.fillStyle = particle.color;
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size * 0.9, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
 
-    /* Kết thúc bằng ba chùm lớn */
-    burstAt(0.16, 0.34, 4320, 146, 1.14);
-    burstAt(0.84, 0.33, 4440, 146, 1.14);
-    burstAt(0.50, 0.16, 4680, 184, 1.26);
-  }
+        ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = "source-over";
 
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-
-  /* Giữ nguyên thời điểm: pháo hoa bắt đầu sau khi bánh hoàn thành. */
-  window.setTimeout(startFireworks, 7000);
-
-  const ageLine = document.querySelector("#birthday-age-message .age-line");
-  const jokeLine = document.querySelector("#birthday-age-message .joke-line");
-
-  window.setTimeout(() => ageLine.classList.add("is-visible"), 7800);
-  window.setTimeout(() => jokeLine.classList.add("is-visible"), 9400);
-
-  const originalMessage = document.getElementById("birthday-age-message");
-  const tapHint = document.getElementById("tap-to-continue");
-  const wishLine = document.querySelector("#wish-transition .wish-line");
-  const wishMessages = [
-    "New age, new things coming your way.",
-    "May success and good things follow you.",
-    "Work less, earn more :>",
-    "Smile more, cry less :>",
-    "And finally...",
-    "May your lonely days end soon :>>>>"
-  ];
-  let wishIndex = -1;
-  let transitionReady = false;
-  let transitionBusy = false;
-
-  function revealTapHint() {
-    transitionReady = true;
-    document.body.classList.add("text-transition-ready");
-    tapHint.classList.remove("is-finished");
-    tapHint.classList.add("is-ready");
-  }
-
-  function finishTapSequence() {
-    transitionReady = false;
-    document.body.classList.remove("text-transition-ready");
-    tapHint.classList.remove("is-ready");
-    tapHint.classList.add("is-finished");
-  }
-
-  function animateWishIn() {
-    wishLine.className = "wish-line";
-    void wishLine.offsetWidth;
-    wishLine.classList.add("is-entering");
-
-    window.setTimeout(() => {
-      wishLine.className = "wish-line is-still";
-      transitionBusy = false;
-      if (wishIndex === wishMessages.length - 1) {
-        window.setTimeout(finishTapSequence, 650);
+        if (particles.length > 0 || flashes.length > 0) {
+          animationFrame = requestAnimationFrame(draw);
+        } else {
+          animationFrame = 0;
+          ctx.clearRect(0, 0, width, height);
+        }
       }
-    }, 740);
-  }
 
-  function showFirstWish() {
-    transitionBusy = true;
-    wishIndex = 0;
-    wishLine.textContent = wishMessages[wishIndex];
-    originalMessage.classList.add("is-leaving");
+      function burstAt(xRatio, yRatio, delay, amount = 112, power = 1) {
+        window.setTimeout(() => {
+          const x = width * xRatio;
+          const y = height * yRatio;
+          createBurst(x, y, amount, power);
+          createGlitterCloud(x, y, Math.round(amount * 0.42));
+          if (!animationFrame) animationFrame = requestAnimationFrame(draw);
+        }, delay);
+      }
 
-    window.setTimeout(() => {
-      originalMessage.style.visibility = "hidden";
-      animateWishIn();
-    }, 360);
-  }
+      function randomBurst(delay, amount = 96, power = 0.95) {
+        window.setTimeout(() => {
+          const sideBias = Math.random() < 0.5;
+          const xRatio = sideBias
+            ? 0.08 + Math.random() * 0.34
+            : 0.58 + Math.random() * 0.34;
+          const yRatio = 0.10 + Math.random() * 0.43;
+          const x = width * xRatio;
+          const y = height * yRatio;
+          createBurst(x, y, amount, power);
+          createGlitterCloud(x, y, 42);
+          if (!animationFrame) animationFrame = requestAnimationFrame(draw);
+        }, delay);
+      }
 
-  function showNextWish() {
-    if (wishIndex >= wishMessages.length - 1) {
-      finishTapSequence();
-      return;
-    }
+      function startFireworks() {
+        /* Đợt mở màn lớn */
+        burstAt(0.18, 0.27, 0, 132, 1.08);
+        burstAt(0.82, 0.24, 140, 138, 1.1);
+        burstAt(0.50, 0.13, 390, 154, 1.16);
 
-    transitionBusy = true;
-    wishLine.className = "wish-line is-leaving";
+        /* Các đợt dày xen kẽ hai bên */
+        burstAt(0.08, 0.46, 720, 108, 0.98);
+        burstAt(0.91, 0.43, 850, 112, 1.0);
+        randomBurst(1110, 102, 0.95);
+        randomBurst(1370, 112, 1.02);
+        burstAt(0.28, 0.18, 1650, 122, 1.04);
+        burstAt(0.72, 0.17, 1760, 126, 1.06);
+        randomBurst(2080, 116, 1.0);
+        randomBurst(2380, 104, 0.94);
 
-    window.setTimeout(() => {
-      wishIndex += 1;
-      wishLine.textContent = wishMessages[wishIndex];
-      animateWishIn();
-    }, 430);
-  }
+        /* Cao trào phủ kín phần trên màn hình */
+        burstAt(0.12, 0.22, 2700, 126, 1.08);
+        burstAt(0.50, 0.28, 2820, 164, 1.2);
+        burstAt(0.88, 0.21, 2940, 132, 1.1);
+        randomBurst(3300, 112, 1.0);
+        randomBurst(3540, 118, 1.04);
+        burstAt(0.32, 0.12, 3830, 132, 1.08);
+        burstAt(0.68, 0.11, 3940, 136, 1.1);
 
-  function handleScreenTap(event) {
-    if (!transitionReady || transitionBusy) return;
-    if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;
-    event.preventDefault();
+        /* Kết thúc bằng ba chùm lớn */
+        burstAt(0.16, 0.34, 4320, 146, 1.14);
+        burstAt(0.84, 0.33, 4440, 146, 1.14);
+        burstAt(0.50, 0.16, 4680, 184, 1.26);
+      }
 
-    if (wishIndex === -1) showFirstWish();
-    else showNextWish();
-  }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
 
-  window.setTimeout(revealTapHint, 10850);
-  window.addEventListener("pointerdown", handleScreenTap);
-  window.addEventListener("keydown", handleScreenTap);
-})();
-</script>
+      /* Giữ nguyên thời điểm: pháo hoa bắt đầu sau khi bánh hoàn thành. */
+      window.setTimeout(startFireworks, 7000);
+
+      const ageLine = document.querySelector("#birthday-age-message .age-line");
+      const jokeLine = document.querySelector("#birthday-age-message .joke-line");
+
+      window.setTimeout(() => ageLine.classList.add("is-visible"), 7800);
+      window.setTimeout(() => jokeLine.classList.add("is-visible"), 9400);
+
+      const originalMessage = document.getElementById("birthday-age-message");
+      const tapHint = document.getElementById("tap-to-continue");
+      const wishLine = document.querySelector("#wish-transition .wish-line");
+      const wishMessages = [
+        "New age, new things coming your way.",
+        "May success and good things follow you.",
+        "Work less, earn more :>",
+        "Smile more, cry less :>",
+        "And finally...",
+        "May your lonely days end soon :>>>>"
+      ];
+      let wishIndex = -1;
+      let transitionReady = false;
+      let transitionBusy = false;
+
+      function revealTapHint() {
+        transitionReady = true;
+        document.body.classList.add("text-transition-ready");
+        tapHint.classList.remove("is-finished");
+        tapHint.classList.add("is-ready");
+      }
+
+      function finishTapSequence() {
+        transitionReady = false;
+        document.body.classList.remove("text-transition-ready");
+        tapHint.classList.remove("is-ready");
+        tapHint.classList.add("is-finished");
+      }
+
+      function animateWishIn() {
+        wishLine.className = "wish-line";
+        void wishLine.offsetWidth;
+        wishLine.classList.add("is-entering");
+
+        window.setTimeout(() => {
+          wishLine.className = "wish-line is-still";
+          transitionBusy = false;
+          if (wishIndex === wishMessages.length - 1) {
+            window.setTimeout(finishTapSequence, 650);
+          }
+        }, 740);
+      }
+
+      function showFirstWish() {
+        transitionBusy = true;
+        wishIndex = 0;
+        wishLine.textContent = wishMessages[wishIndex];
+        originalMessage.classList.add("is-leaving");
+
+        window.setTimeout(() => {
+          originalMessage.style.visibility = "hidden";
+          animateWishIn();
+        }, 360);
+      }
+
+      function showNextWish() {
+        if (wishIndex >= wishMessages.length - 1) {
+          finishTapSequence();
+          return;
+        }
+
+        transitionBusy = true;
+        wishLine.className = "wish-line is-leaving";
+
+        window.setTimeout(() => {
+          wishIndex += 1;
+          wishLine.textContent = wishMessages[wishIndex];
+          animateWishIn();
+        }, 430);
+      }
+
+      function handleScreenTap(event) {
+        if (!transitionReady || transitionBusy) return;
+        if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;
+        event.preventDefault();
+
+        if (wishIndex === -1) showFirstWish();
+        else showNextWish();
+      }
+
+      window.setTimeout(revealTapHint, 10850);
+      window.addEventListener("pointerdown", handleScreenTap);
+      window.addEventListener("keydown", handleScreenTap);
+    })();
+  </script>
 
 </body>
+
 </html>
